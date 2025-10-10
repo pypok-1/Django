@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Про нас</title>
+    <link rel="stylesheet" href="/static/css/styles_about.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'product_list' %}">Головна</a></li>
+                <li><a href="{% url 'about' %}">Про нас</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <h1>Про наш магазин</h1>
+            <p>Ласкаво просимо до нашого інтернет-магазину! Ми спеціалізуємося на продажі якісних товарів за доступними цінами.</p>
+            <p>Наша місія - це забезпечити клієнтів найкращим сервісом та якісними продуктами.</p>
+        </section>
+
+        <section class="about-me">
+            <h2>Про мене</h2>
+            <p>Я веб-розробник, який створює цей магазин як навчальний проект. Використовую Django, HTML та CSS для розробки.</p>
+        </section>
+    </main>
+
+</body>
+</html>
