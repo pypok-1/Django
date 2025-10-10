@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список брендів</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/brands.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'product_list' %}">Головна</a></li>
+                <li><a href="{% url 'about' %}">Про магазин</a></li>
+                <li><a href="{% url 'brand_list' %}">Бренди</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Наші бренди</h1>
+
+        {% if brands %}
+        <div class="brands-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Назва</th>
+                        <th>Країна</th>
+                        <th>Опис</th>
+                        <th>Зображення</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for brand in brands %}
+                    <tr class="brand-row" onclick="window.location='{% url 'brand_detail' brand.pk %}'" style="cursor: pointer;">
+                        <td class="brand-name">{{ brand.name }}</td>
+                        <td class="brand-country">{{ brand.country }}</td>
+                        <td class="brand-description">{{ brand.description|truncatewords:20 }}</td>
+                        <td class="brand-image">
+                            {% if brand.image %}
+                                <img src="{{ brand.image.url }}" alt="{{ brand.name }}" class="brand-thumb">
+                            {% else %}
+                                <span class="no-image">Немає зображення</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="no-brands">
+            <p>Наразі немає доступних брендів</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>

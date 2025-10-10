@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from django.views.generic import DetailView, ListView
-from .models import Product
+from .models import Product, Musician, Album, Brand
 from django.views.generic import TemplateView, ListView, DetailView
 
 
@@ -38,3 +38,17 @@ class ProductDetailView(DetailView):
     pk_url_kwarg = 'product_pk'
     slug_url_kwarg = 'product_slug'
     context_object_name = 'products'
+
+
+class BrandListView(ListView):
+    model = Brand
+    template_name = 'products/brand_list.html'
+    context_object_name = 'brands'
+    ordering = ['name']
+
+
+class BrandDetailView(DetailView):
+    model = Brand
+    template_name = 'products/brand_detail.html'
+    context_object_name = 'brand'
+    pk_url_kwarg = 'pk'

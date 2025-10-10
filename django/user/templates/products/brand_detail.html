@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ brand.name }} - Деталі бренду</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/brands.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'product_list' %}">Головна</a></li>
+                <li><a href="{% url 'about' %}">Про магазин</a></li>
+                <li><a href="{% url 'about_me' %}">Про мене</a></li>
+                <li><a href="{% url 'brand_list' %}">Бренди</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="{% url 'brand_list' %}" class="back-link">← Назад до списку брендів</a>
+
+        <div class="brand-detail">
+            <div class="brand-header">
+                {% if brand.image %}
+                <div class="brand-image-large">
+                    <img src="{{ brand.image.url }}" alt="{{ brand.name }}">
+                </div>
+                {% endif %}
+                <div class="brand-info">
+                    <h1>{{ brand.name }}</h1>
+                    <p class="brand-country">Країна: <strong>{{ brand.country }}</strong></p>
+                </div>
+            </div>
+
+            <div class="brand-description-full">
+                <h2>Про бренд</h2>
+                <p>{{ brand.description }}</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
